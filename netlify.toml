@@ -1,19 +1,10 @@
-# Netlify build config for your frontend in subfolder
 [build]
-  # Change to the folder BEFORE running npm/yarn/pnpm install & build
-  # This is the directory with your package.json
-  base = "pquizzer-frontent/pquizzer"
+  base    = "pquizzer-frontent/pquizzer"   # ← copy-paste this exactly; no extra spaces or quotes issues
+  command = "npm run build"                # Vite default; change to yarn/pnpm if you use that
+  publish = "dist"                         # Vite outputs to dist/ (relative to base)
 
-  # Build command - run INSIDE the base folder
-  command = "npm run build"   # Change to "yarn build" or "pnpm build" if you use those
-
-  # Where your built files end up (relative to the base folder)
-  # Most React/Vite projects use "dist" or "build"
-  publish = "dist"            # ← Change this if your output is "build" instead!
-                              # Check your package.json "scripts" > "build" to see what folder it creates
-
-# This fixes the 404 error on refresh / direct sub-route access (SPA routing)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from   = "/*"
+  to     = "/index.html"
   status = 200
+  force  = false  # optional, prevents loop issues
