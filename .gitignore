@@ -1,0 +1,15 @@
+# IntelliJ / IDE files - never commit these
+.idea/
+*.iml
+
+# Build / output folders
+target/
+build/
+dist/
+node_modules/
+.env
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
