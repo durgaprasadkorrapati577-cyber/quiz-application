@@ -1,0 +1,5 @@
+{
+  "name": "PQuizzer",
+  "description": "A high-performance, modern quiz application integrated with a Spring Boot backend, featuring weekly contests and real-time leaderboards.",
+  "requestFramePermissions": []
+}
