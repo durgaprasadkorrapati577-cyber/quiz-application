@@ -1,5 +1,5 @@
 [build]
-  base    = "pquizzer-frontent/pquizzer/services"   # ← copy-paste this exactly; no extra spaces or quotes issues
+  base    = "pquizzer-frontend/pquizzer/services"   # ← copy-paste this exactly; no extra spaces or quotes issues
   command = "npm run build"                # Vite default; change to yarn/pnpm if you use that
   publish = "dist"                         # Vite outputs to dist/ (relative to base)
 
