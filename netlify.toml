@@ -1,8 +1,6 @@
 [build]
-  base    = "pquizzer-frontend/pquizzer/services"   # ← copy-paste this exactly; no extra spaces or quotes issues
-  command = "npm run dev"                # Vite default; change to yarn/pnpm if you use that
-  publish = "dist"                         # Vite outputs to dist/ (relative to base)
-
+  command = "cd pquizzer-frontend/pquizzer && npm run build"   # ← MUST be "build", not "dev"
+  publish = "pquizzer-frontend/pquizzer/dist"                  # Vite default output folder
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
