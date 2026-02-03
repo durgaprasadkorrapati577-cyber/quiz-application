@@ -2,27 +2,34 @@ package com.application.QuizApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.List;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 public class CorsConfig {
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        config.setAllowedOrigins(List.of("*"));   // allow all origins
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(false);
+        http
+                .csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(auth -> auth
+                        // ✅ PUBLIC endpoints
+                        .requestMatchers(
+                                "/",
+                                "/auth/**",
+                                "/actuator/health",
+                                "/error"
+                        ).permitAll()
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
+                        // 🔒 everything else secured
+                        .anyRequest().authenticated()
+                );
 
-        return source;
+        return http.build();
     }
 }
