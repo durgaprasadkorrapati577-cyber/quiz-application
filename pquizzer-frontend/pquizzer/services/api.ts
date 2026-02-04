@@ -5,7 +5,10 @@ import { User, Quiz, Question, QuizResponse, LeaderboardEntry, WeeklyContest, Us
  * PQUIZZER BACKEND CONFIGURATION
  * Port: 8081
  */
-const BACKEND_URL = const API_BASE = "https://quizapp-backend.onrender.com";
+export const API_BASE = "https://quiz-application-1kc3.onrender.com";  // your actual Render backend URL
+
+// Optional: if you need a full URL helper
+export const BACKEND_URL = API_BASE;
 
 const getHeaders = () => {
   const token = localStorage.getItem('pquizzer_token');
