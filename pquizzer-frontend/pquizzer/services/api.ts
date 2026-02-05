@@ -5,7 +5,7 @@ import { User, Quiz, Question, QuizResponse, LeaderboardEntry, WeeklyContest, Us
  * PQUIZZER BACKEND CONFIGURATION
  * Port: 8081
  */
-export const API_BASE = "https://quiz-application-1kc3.onrender.com";  // your actual Render backend URL
+export const API_BASE = "https://quiz-application-1-o4nf.onrender.com";  // your actual Render backend URL
 
 // Optional: if you need a full URL helper
 export const BACKEND_URL = API_BASE;
